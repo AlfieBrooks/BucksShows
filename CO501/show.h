@@ -25,6 +25,7 @@ void show::getShows() {
 	cout << "1 - The Lion King (26/04/2019 - 6pm)" << endl;
 	cout << "2 - Wicked (27/04/2019 - 7:30pm)" << endl;
 	cout << "3 - Avengers: The Musical (28/04/2019 - 1pm)" << endl;
+	cout << "4 - Aladdin: (29/04/2019 - 7:30pm)" << endl;
 }
 
 void show::selectShow(string selectedShowName, string selectedShowDate, string selectedShowTime) {
@@ -39,7 +40,7 @@ void show::selectShow(string selectedShowName, string selectedShowDate, string s
 	cout << "Please enter a show number: ";
 	cin.get(input);
 
-	while (input != '1' && input != '2' && input != '3') {
+	while (input != '1' && input != '2' && input != '3' && input != '4') {
 		cin.clear();
 		cin.ignore(100, '\n');
 		cout << "Please enter a valid show number: ";
@@ -61,6 +62,11 @@ void show::selectShow(string selectedShowName, string selectedShowDate, string s
 		selectedShowName = "Avengers: The Musical";
 		selectedShowDate = "28/04/2019";
 		selectedShowTime = "1pm";
+		break;
+	case '4':
+		selectedShowName = "Aladdin: The Musical";
+		selectedShowDate = "29/04/2019";
+		selectedShowTime = "7:30pm";
 		break;
 	}
 

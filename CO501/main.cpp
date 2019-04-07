@@ -2,30 +2,38 @@
 #include <iostream>
 #include <string>
 #include "show.h"
+#include "seat.h"
+
+using namespace std;
 
 int main() {
-	string a,
-		b,
-		c;
+	string selectedShowName,
+		selectedShowDate,
+		selectedShowTime;
+	int seatQuantity;
+	double seatSelection;
 	char input,
 		terminator;
 	show Show;
+	seat Seat;
 
 	//Customer.Login();
 	//Consumer.profileInfo();
 
 	cout << "\n-------------------------- WELCOME --------------------------\n" << endl;
 	do {
-		Show.selectShow(a, b, c);
+		Show.selectShow(selectedShowName, selectedShowDate, selectedShowTime);
 
 		do {
 			cout << "\nPlease confirm your choice (Y = Yes, N = No): ";
 			cin.get(input);
 		} 
-		while (tolower(input == 'y') && tolower(input == 'n'));
+		while (input != 'Y' && input != 'y' && input != 'N' && input != 'n');
 		cin.get(terminator);
 	} 
-	while (tolower(input == 'n'));
+	while (input == 'N' && input == 'n');
 
-	//Seat.initialiseSeatSelection();
+	Seat.setSeatSelection('A');
+	seatQuantity = Seat.getSeatQuantity();
+	seatSelection = Seat.getSeatSelection();
 }
