@@ -1,18 +1,20 @@
 #include <iostream>
-#include <iomanip>
 #include <string>
 
 using namespace std;
 
 class show {
-public:
-	show();
-	void getShows();
-	void selectShow(string selectedShowName, string selectedShowDate, string selectedShowTime);
-protected:
-	string selectedShowName;
-	string selectedShowDate;
-	string selectedShowTime;
+	public:
+		show();
+		void getShows();
+		void selectShow(string selectedShowName, string selectedShowDate, string selectedShowTime);
+		string getSelectedShowName();
+		string getSelectedShowDate();
+		string getSelectedShowTime();
+	protected:
+		string selectedShowName;
+		string selectedShowDate;
+		string selectedShowTime;
 };
 
 show::show() {
@@ -29,7 +31,7 @@ void show::getShows() {
 }
 
 void show::selectShow(string selectedShowName, string selectedShowDate, string selectedShowTime) {
-	char input;
+	int input;
 	char terminator;
 
 	cout << "\n-------------------------- SELECT A SHOW --------------------------\n" << endl;
@@ -38,43 +40,55 @@ void show::selectShow(string selectedShowName, string selectedShowDate, string s
 
 	cin.clear();
 	cout << "Please enter a show number: ";
-	cin.get(input);
+	cin >> input;
 
-	while (input != '1' && input != '2' && input != '3' && input != '4') {
+	while (input < 1 || input > 4) {
 		cin.clear();
 		cin.ignore(100, '\n');
 		cout << "Please enter a valid show number: ";
-		cin.get(input);
+		cin >> input;
 	}
 
 	switch (input) {
-	case '1':
+	case 1:
 		selectedShowName = "The Lion King";
 		selectedShowDate = "26/04/2019";
 		selectedShowTime = "6pm";
 		break;
-	case '2':
+	case 2:
 		selectedShowName = "Wicked";
 		selectedShowDate = "27/04/2019";
 		selectedShowTime = "7:30pm";
 		break;
-	case '3':
+	case 3:
 		selectedShowName = "Avengers: The Musical";
 		selectedShowDate = "28/04/2019";
 		selectedShowTime = "1pm";
 		break;
-	case '4':
+	case 4:
 		selectedShowName = "Aladdin: The Musical";
 		selectedShowDate = "29/04/2019";
 		selectedShowTime = "7:30pm";
 		break;
 	}
 
-	cout << "\nYou have selected the show '" << selectedShowName << "' on " << selectedShowDate << " at " << selectedShowTime;
+	cout << "\nYou have selected the show '" << selectedShowName << "' on " << selectedShowDate << " at " << selectedShowTime << endl;
 
-	this -> selectedShowName = selectedShowName;
-	this -> selectedShowDate = selectedShowDate;
-	this -> selectedShowTime = selectedShowTime;
+	this->selectedShowName = selectedShowName;
+	this->selectedShowDate = selectedShowDate;
+	this->selectedShowTime = selectedShowTime;
 
 	cin.get(terminator);
+}
+
+string show::getSelectedShowName() {
+	return selectedShowName;
+}
+
+string show::getSelectedShowDate() {
+	return selectedShowDate;
+}
+
+string show::getSelectedShowTime() {
+	return selectedShowTime;
 }

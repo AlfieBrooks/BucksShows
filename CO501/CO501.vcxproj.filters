@@ -24,6 +24,12 @@
     <ClInclude Include="seat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ticket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="user.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

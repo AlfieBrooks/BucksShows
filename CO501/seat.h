@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-#include <iomanip>
 #include <string>
 
 using namespace std;
@@ -9,22 +8,17 @@ class seat {
 		seat();
 		void setSeatSelection(char seatStatus);
 		int getSeatQuantity();
-		double getSeatSelection();
+		void getSeatSelection();
 	private:
 		void displaySeatingPlan();
-		void calculatePrice();
 	protected:
 		char seatingPlan[9][7];
 		int seatQuantity;
-		int rowNum;
-		double price;
 };
 
 seat::seat() {
-	setSeatSelection('0');
+	setSeatSelection('A');
 	seatQuantity = 0;
-	rowNum = 0;
-	price = 0;
 }
 
 void seat::setSeatSelection(char seatStatus) {
@@ -63,59 +57,42 @@ void seat::displaySeatingPlan() {
 	cout << "~~~~~-------------------------------------------" << endl;
 }
 
-double seat::getSeatSelection() {
-	char input;
+void seat::getSeatSelection() {
 	int row,
 		col;
-	char terminator;
 
 	row = 0;
 	col = 0;
 
 	displaySeatingPlan();
 
-	do {
-		for (int i = 0; i < seatQuantity; i++) {
-			cout << "\nSelection for ticket number " << i + 1 << endl;
-			do {
-				cout << "Please enter a row number (1 - 9): ";
-				cin >> row;
-			} while (row < 0 || row > 9);
-			rowNum = row;
-
-			do {
-				cout << "Please enter a column number (1 - 7): ";
-				cin >> col;
-			} while (col < 0 || col > 7);
-			cin.get(terminator);
-		}
-
-		while (seatingPlan[row][col] == 'H') {
-			cout << "Sorry, That seat is unavailable" << endl;
-			do {
-				cout << "Please enter another row number (1 - 9): ";
-				cin >> row;
-			} while (row < 0 || row > 9);
-
-			do {
-				cout << "Please enter another column number (1 - 7): ";
-				cin >> col;
-			} while (col < 0 || col > 7);
-		}
-		cin.get(terminator);
+	for (int i = 0; i < seatQuantity; i++) {
+		cout << "\nSelection for ticket number " << i + 1 << endl;
+		do {
+			cout << "Please enter a row number (1 - 9): ";
+			cin >> row;
+		} while (row < 1 || row > 9);
 
 		do {
-			cout << "\nPlease confirm your choice (Y = Yes, N = No): ";
-			cin.get(input);
-		} while (input != 'Y' && input != 'y' && input != 'N' && input != 'n');
-		cin.get(terminator);
-	} while (input == 'N' && input == 'n');
+			cout << "Please enter a column number (1 - 7): ";
+			cin >> col;
+		} while (col < 1 || col > 7);
+		seatingPlan[row - 1][col - 1] = 'H';
+	}
 
-	seatingPlan[row][col] = 'H';
+	while (seatingPlan[row][col] == 'H') {
+		cout << "Sorry, That seat is unavailable" << endl;
+		do {
+			cout << "Please enter another row number (1 - 9): ";
+			cin >> row;
+		} while (row < 1 || row > 9);
+
+		do {
+			cout << "Please enter another column number (1 - 7): ";
+			cin >> col;
+		} while (col < 1 || col > 7);
+	}
+
+	cout << "\n-------------------------- YOUR SELECTED SEATS --------------------------\n" << endl;
 	displaySeatingPlan();
-	return 20;
 }
-
-//void seat::calculatePrice() {
-
-//}

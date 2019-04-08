@@ -1,8 +1,10 @@
 #include "pch.h"
 #include <iostream>
 #include <string>
+#include "user.h"
 #include "show.h"
 #include "seat.h"
+#include "ticket.h"
 
 using namespace std;
 
@@ -11,29 +13,34 @@ int main() {
 		selectedShowDate,
 		selectedShowTime;
 	int seatQuantity;
-	double seatSelection;
-	char input,
-		terminator;
+
+	//Initilise Objects
+	user User;
 	show Show;
 	seat Seat;
+	ticket Ticket;
 
-	//Customer.Login();
-	//Consumer.profileInfo();
+	//Prompt the user to login
+	User.login();
 
-	cout << "\n-------------------------- WELCOME --------------------------\n" << endl;
-	do {
-		Show.selectShow(selectedShowName, selectedShowDate, selectedShowTime);
+	//Prompt the users firstName, lastName and address
+	User.getProfileInfo();
 
-		do {
-			cout << "\nPlease confirm your choice (Y = Yes, N = No): ";
-			cin.get(input);
-		} 
-		while (input != 'Y' && input != 'y' && input != 'N' && input != 'n');
-		cin.get(terminator);
-	} 
-	while (input == 'N' && input == 'n');
+	cout << "\n--------------------------- Welcome " << User.getFirstName() << " ---------------------------\n" << endl;
 
-	Seat.setSeatSelection('A');
+	//Prompt the user to select a show
+	Show.selectShow(selectedShowName, selectedShowDate, selectedShowTime);
+
+	//Prompts the user to enter number of seats
 	seatQuantity = Seat.getSeatQuantity();
-	seatSelection = Seat.getSeatSelection();
+
+	//Displays the table of seats for the user to pick
+	Seat.getSeatSelection();
+
+	//Prompts the type of ticket the user will buy
+	Ticket.getTicketType(seatQuantity);
+	
+	//Prints the tickets the user has chosen
+	Ticket.printTicket(User.getFirstName(), User.getLastName(), User.getAddress(),
+		Show.getSelectedShowName(), Show.getSelectedShowDate(), Show.getSelectedShowTime(), seatQuantity);
 }

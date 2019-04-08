@@ -154,6 +154,8 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="seat.h" />
     <ClInclude Include="show.h" />
+    <ClInclude Include="ticket.h" />
+    <ClInclude Include="user.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
