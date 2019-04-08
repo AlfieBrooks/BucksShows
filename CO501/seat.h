@@ -80,19 +80,6 @@ void seat::getSeatSelection() {
 		seatingPlan[row - 1][col - 1] = 'H';
 	}
 
-	while (seatingPlan[row][col] == 'H') {
-		cout << "Sorry, That seat is unavailable" << endl;
-		do {
-			cout << "Please enter another row number (1 - 9): ";
-			cin >> row;
-		} while (row < 1 || row > 9);
-
-		do {
-			cout << "Please enter another column number (1 - 7): ";
-			cin >> col;
-		} while (col < 1 || col > 7);
-	}
-
 	cout << "\n-------------------------- YOUR SELECTED SEATS --------------------------\n" << endl;
 	displaySeatingPlan();
 }
