@@ -6,11 +6,13 @@ using namespace std;
 class show {
 	public:
 		show();
-		void getShows();
+		~show();
 		void selectShow(string selectedShowName, string selectedShowDate, string selectedShowTime);
 		string getSelectedShowName();
 		string getSelectedShowDate();
 		string getSelectedShowTime();
+	private: 
+		void getShows();
 	protected:
 		string selectedShowName;
 		string selectedShowDate;
@@ -23,11 +25,14 @@ show::show() {
 	selectedShowTime = "";
 }
 
+show::~show() {
+}
+
 void show::getShows() {
 	cout << "1 - The Lion King (26/04/2019 - 6pm)" << endl;
 	cout << "2 - Wicked (27/04/2019 - 7:30pm)" << endl;
 	cout << "3 - Avengers: The Musical (28/04/2019 - 1pm)" << endl;
-	cout << "4 - Aladdin: (29/04/2019 - 7:30pm)" << endl;
+	cout << "4 - Aladdin (29/04/2019 - 7:30pm)" << endl;
 }
 
 void show::selectShow(string selectedShowName, string selectedShowDate, string selectedShowTime) {
@@ -66,7 +71,7 @@ void show::selectShow(string selectedShowName, string selectedShowDate, string s
 		selectedShowTime = "1pm";
 		break;
 	case 4:
-		selectedShowName = "Aladdin: The Musical";
+		selectedShowName = "Aladdin";
 		selectedShowDate = "29/04/2019";
 		selectedShowTime = "7:30pm";
 		break;

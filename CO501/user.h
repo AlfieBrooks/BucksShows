@@ -24,7 +24,8 @@ user::user() {
 	address = "";
 }
 
-user::~user() {}
+user::~user() {
+}
 
 void user::login() {
 	string username;

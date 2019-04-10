@@ -6,10 +6,11 @@ using namespace std;
 class seat {
 	public:
 		seat();
-		void setSeatSelection(char seatStatus);
+		~seat();
 		int getSeatQuantity();
 		void getSeatSelection();
 	private:
+		void setSeatSelection(char seatStatus);
 		void displaySeatingPlan();
 	protected:
 		char seatingPlan[9][7];
@@ -19,6 +20,9 @@ class seat {
 seat::seat() {
 	setSeatSelection('A');
 	seatQuantity = 0;
+}
+
+seat::~seat() {
 }
 
 void seat::setSeatSelection(char seatStatus) {
@@ -55,6 +59,10 @@ void seat::displaySeatingPlan() {
 		cout << endl;
 	}
 	cout << "~~~~~-------------------------------------------" << endl;
+	cout << "\n          ----- Key -----          " << endl;
+	cout << "             A = Available" << endl;
+	cout << "                H = Held" << endl;
+	cout << "\n          ---------------         \n " << endl;
 }
 
 void seat::getSeatSelection() {

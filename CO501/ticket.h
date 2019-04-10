@@ -6,6 +6,7 @@ using namespace std;
 class ticket {
 	public:
 		ticket();
+		~ticket();
 		void getTicketType(int seatQuantity);
 		void printTicket(string firstName, string lastName, string address,
 			string selectedShowName, string selectedShowDate, string selectedShowTime, int seatQuantity);
@@ -17,6 +18,9 @@ class ticket {
 
 ticket::ticket() {
 	price = 0;
+}
+
+ticket::~ticket() {
 }
 
 void ticket::getTicketType(int seatQuantity) {
