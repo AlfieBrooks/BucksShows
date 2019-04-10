@@ -59,10 +59,10 @@ void seat::displaySeatingPlan() {
 		cout << endl;
 	}
 	cout << "~~~~~-------------------------------------------" << endl;
-	cout << "\n          ----- Key -----          " << endl;
-	cout << "             A = Available" << endl;
-	cout << "                H = Held" << endl;
-	cout << "\n          ---------------         \n " << endl;
+	cout << "\n                ----- Key -----" << endl;
+	cout << "                 A = Available" << endl;
+	cout << "                    H = Held" << endl;
+	cout << "                ---------------\n " << endl;
 }
 
 void seat::getSeatSelection() {
